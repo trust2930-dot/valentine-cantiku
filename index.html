@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruang Kenangan Cinta</title>
+
+<style>
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, #ffe6f0, #f8e6ff);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1, h2 {
+    color: #d63384;
+}
+
+p {
+    max-width: 700px;
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+.button {
+    background: white;
+    border: 2px solid #d63384;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #d63384;
+    color: white;
+}
+
+/* LOVE TITLE */
+.love-title {
+    font-size: 1.8em;
+    color: #d63384;
+    margin-top: 30px;
+    opacity: 0;
+    transition: 0.6s ease;
+    font-weight: bold;
+}
+
+/* LOVE GALLERY */
+.love-gallery {
+    position: relative;
+    width: 300px;
+    height: 270px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: 0.6s ease;
+    display: none;
+}
+
+.love-gallery.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.love-title.show {
+    opacity: 1;
+}
+
+.love-gallery img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Posisi LOVE */
+.img1 { top: 0; left: 60px; }
+.img2 { top: 0; right: 60px; }
+.img3 { top: 70px; left: 0; }
+.img4 { top: 70px; right: 0; }
+.img5 { top: 140px; left: 60px; }
+.img6 { top: 140px; right: 60px; }
+.img7 { bottom: 0; left: 105px; }
+
+.heart-btn {
+    font-size: 2.5em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.heart-btn:hover {
+    transform: scale(1.2);
+}
+</style>
+</head>
+
+<body>
+
+<!-- LANDING -->
+<div id="landing" class="section show">
+    <h1>Ada Sesuatu Untukmu</h1>
+    <p>Klik masuk untuk melihat sesuatu yang aku siapkan khusus.</p>
+    <button class="button" onclick="showSection('story')">Masuk</button>
+</div>
+
+<!-- STORY -->
+<div id="story" class="section">
+    <h2>Terima Kasih Sudah Hadir</h2>
+    <p>
+        Terima kasih karena sudah hadir di hidupku dengan cara yang sederhana,
+        tapi selalu berhasil membuat hari-hariku terasa lebih hangat.
+        Kamu membuat banyak hal terasa lebih ringan.
+        Dan untuk itu… aku bersyukur.
+    </p>
+    <button class="button" onclick="showSection('moments')">Lanjut</button>
+</div>
+
+<!-- MOMENTS -->
+<div id="moments" class="section">
+    <h2>Perasaan Ini Tulus</h2>
+    <p>
+        Aku tidak menjanjikan kisah tanpa masalah,
+        tapi aku berharap kita selalu memilih untuk tetap saling menggenggam,
+        bukan saling melepaskan.
+    </p>
+    <button class="button" onclick="showSection('messages')">Lanjut</button>
+</div>
+
+<!-- FINAL -->
+<div id="messages" class="section">
+    <h2>Pesan Dari Hati</h2>
+    <p>
+        Semoga apa pun yang kita jalani ke depan,
+        selalu dipenuhi kejujuran, ketulusan, dan rasa saling percaya.
+    </p>
+
+    <div class="heart-btn" onclick="showLove()">❤️</div>
+
+    <!-- JUDUL VALENTINE -->
+    <div class="love-title" id="loveTitle">
+        Selamat Hari Valentine, cantikkuuu ❤️
+    </div>
+
+    <!-- LOVE PHOTOS -->
+    <div class="love-gallery" id="loveGallery">
+        <img src="foto1.jpg" class="img1">
+        <img src="foto2.jpg" class="img2">
+        <img src="foto3.jpg" class="img3">
+        <img src="foto4.jpg" class="img4">
+        <img src="foto5.jpg" class="img5">
+        <img src="foto6.jpg" class="img6">
+        <img src="foto7.jpg" class="img7">
+    </div>
+
+</div>
+
+<script>
+let currentSection = "landing";
+
+function showSection(id) {
+    document.getElementById(currentSection).classList.remove("show");
+    document.getElementById(id).classList.add("show");
+    currentSection = id;
+    document.getElementById(id).scrollIntoView({behavior: "smooth"});
+}
+
+function showLove() {
+    document.getElementById("loveGallery").classList.add("show");
+    document.getElementById("loveTitle").classList.add("show");
+    document.getElementById("loveGallery").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
